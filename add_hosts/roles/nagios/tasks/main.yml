@@ -1,0 +1,31 @@
+---
+- name: Add host
+#  debug:
+#    msg: "{{ item.key }}: {{ item.value.hostname }}"
+  template: 
+    src: newhost.cfg.j2
+    dest: /usr/local/nagios/etc/objects/{{ item.key + '.cfg' }}
+  become: true
+  with_dict : "{{ nagios_hosts }}"
+
+- name: Verify Nagios config file
+  command: /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+#  when: nagios_needs_restart !=0
+  become: true 
+
+- name: Start nagios service
+  command: systemctl restart nagios.service
+#  when: nagios_needs_restart !=0
+  become: true
+
+- name: Setup HTTPD service
+  command: systemctl enable httpd.service
+  ignore_errors: true
+#  when: nagios_needs_restart !=0
+  become: true
+
+- name: Restart HTTPD service
+  command: systemctl restart httpd.service
+  ignore_errors: true
+#  when: nagios_needs_restart !=0
+  become: true

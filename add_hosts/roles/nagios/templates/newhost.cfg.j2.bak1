@@ -1,0 +1,19 @@
+###############################################################################
+#
+# HOST DEFINITION
+#
+###############################################################################
+
+# Define a host for the local machine
+
+define host {
+
+    use                     linux-server            ; Name of host template to use
+                                                    ; This host definition will inherit all variables that are defined
+                                                    ; in (or inherited by) the linux-server host template definition.
+    host_name               {{ item.value.hostname }}
+    alias                   {{ item.value.hostname }}
+    address                 {{ item.value.ip_address }}
+    parents		    {{ item.value.host_parent }}
+    hostgroups		    {{ item.value.hostgroup }}
+}

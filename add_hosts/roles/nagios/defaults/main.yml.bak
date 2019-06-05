@@ -1,0 +1,26 @@
+-nagios_hosts:
+  ekwok:
+    ip_address: 192.168.3.15
+    hostname: ekwok
+    host_parent: localhost
+    hostgroup: linux-servers
+  ambari-node-1:
+    ip_address: 192.168.119.20
+    hostname: ambari-poc-node-1
+    host_parent: localhost
+    hostgroup: linux-servers
+  ambari-node-2:
+    ip_address: 192.168.119.21
+    hostname: ambari-poc-node-2
+    host_parent: localhost
+    hostgroup: linux-servers
+  ambari-node-3:
+    ip_address: 192.168.119.22
+    hostname: ambari-poc-node-3
+    host_parent: localhost
+    hostgroup: linux-servers
+  ambari-node-4:
+    ip_address: 192.168.119.23
+    hostname: ambari-poc-node-4
+    host_parent: localhost
+    hostgroup: linux-servers
